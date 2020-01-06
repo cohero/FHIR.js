@@ -110,7 +110,7 @@ var ParseConformance = (function () {
             for (var x in structureDefinition.snapshot.element) {
                 var element = structureDefinition.snapshot.element[x];
                 var elementId = structureDefinition.snapshot.element[x].id;
-                elementId = elementId.substring(structureDefinition.id.length + 1);
+                elementId = elementId.substring(elementId.indexOf(".") + 1);
                 if (!element.max) {
                     throw 'Expected all base resource elements to have a max value';
                 }

@@ -68,7 +68,7 @@ export class ParseConformance {
     public structureDefinitions: any[] = [];
     private version: string;
     private codeSystems: any[];
-    
+
     /**
      * Class responsible for parsing StructureDefinition and ValueSet resources into bare-minimum information
      * needed for serialization and validation.
@@ -97,7 +97,7 @@ export class ParseConformance {
 
         return urls.indexOf(url) >= 0;
     }
-    
+
     /**
      * Sorts an array of value sets based on each value set's dependencies.
      * If a value set depends on another value set, the dependent value set
@@ -228,7 +228,8 @@ export class ParseConformance {
             for (let x in structureDefinition.snapshot.element) {
                 const element = structureDefinition.snapshot.element[x];
                 let elementId = structureDefinition.snapshot.element[x].id;
-                elementId = elementId.substring(structureDefinition.id.length + 1);
+
+                elementId = elementId.substring(elementId.indexOf(".") + 1);
 
                 if (!element.max) {
                     throw 'Expected all base resource elements to have a max value';
